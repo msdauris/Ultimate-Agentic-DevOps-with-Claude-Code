@@ -1,0 +1,1 @@
+- [Project Infra Conventions](project_infra_conventions.md) — dauris-portfolio-site: region eu-west-1, state bucket naming, CloudFront cert constraint

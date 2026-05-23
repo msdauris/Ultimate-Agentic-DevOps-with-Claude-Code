@@ -1,0 +1,12 @@
+# Local Terraform state — never commit this; use remote S3 backend instead
+terraform.tfstate
+terraform.tfstate.backup
+
+# Terraform working directories
+.terraform/
+.terraform.lock.hcl
+
+# Variable overrides (may contain sensitive values)
+*.tfvars
+*.tfvars.json
+!example.tfvars

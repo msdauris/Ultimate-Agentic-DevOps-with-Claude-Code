@@ -1,0 +1,1 @@
+- [Project Infra Patterns](project_infra_patterns.md) — Security patterns and known issues from this project's first audit (2026-05-23)

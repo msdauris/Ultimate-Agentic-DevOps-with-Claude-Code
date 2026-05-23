@@ -9,7 +9,7 @@ argument-hint: "[aws-region] [project-name]"
 Generate a complete Terraform configuration for deploying a static website to AWS using S3 + CloudFront.
 
 Use $ARGUMENTS for optional overrides:
-- $0 = AWS region (default: ap-south-1)
+- $0 = AWS region (default: eu-west-1)
 - $1 = Project name (default: portfolio-site)
 
 ## What to Generate
