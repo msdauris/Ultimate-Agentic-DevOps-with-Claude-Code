@@ -30,13 +30,13 @@ Before you deploy, you MUST edit the footer and add your details:
 Original:
 
 ```html
-<p>Crafted with <span>cloud</span> excellence by Pravin Mishra</p>
+<p>Crafted with <span>cloud</span> excellence by Emma Dauris</p>
 ```
 
 Add this line (example):
 
 ```html
-<p><strong>Deployed by:</strong> DMI Cohort 2 | Rahul Sharma | Group 4 | Week 1 | 16-01-2026</p>
+<p><strong>Deployed by:</strong> DMI Cohort X | Emma Dauris | Group X | Week X | 23-05-2026</p>
 ```
 
 ✅ This proof must be visible in your browser screenshot submission.
