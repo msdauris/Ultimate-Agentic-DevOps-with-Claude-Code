@@ -38,6 +38,20 @@ resource "aws_s3_bucket_ownership_controls" "site" {
   }
 }
 
+# Server-side encryption — SSE-S3 (AES256), AWS-managed keys
+# AWS enables this by default on all new buckets; codified here so Terraform
+# owns the configuration and drift is visible in future plans.
+resource "aws_s3_bucket_server_side_encryption_configuration" "site" {
+  bucket = aws_s3_bucket.site.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+    bucket_key_enabled = false
+  }
+}
+
 # ---------------------------------------------------------------------------
 # CloudFront Origin Access Control (OAC)
 # ---------------------------------------------------------------------------
@@ -127,12 +141,13 @@ resource "aws_cloudfront_distribution" "site" {
     }
   }
 
-  # --- TLS: default CloudFront certificate, TLS 1.2 minimum ---
-  # minimum_protocol_version is set without ssl_support_method — AWS requires
-  # ssl_support_method only when using a custom certificate, not the default.
+  # --- TLS: default CloudFront certificate ---
+  # NOTE: minimum_protocol_version is only enforced by AWS when using a custom
+  # SSL certificate (ACM/IAM). With cloudfront_default_certificate = true, AWS
+  # ignores this field and always returns "TLSv1" regardless of what is set.
+  # To enforce TLSv1.2_2021, attach a custom domain + ACM certificate.
   viewer_certificate {
     cloudfront_default_certificate = true
-    minimum_protocol_version       = "TLSv1.2_2021"
   }
 
   tags = local.common_tags
